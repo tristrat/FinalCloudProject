@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - db_data:/data/db
+    container_name: mongodb_projet
+
+
+  flask_app:
+    build: .
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: mongodb://root:score_tb@db:27017/score
+
+
+volumes:
+  db_data:

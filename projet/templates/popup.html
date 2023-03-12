@@ -1,0 +1,10 @@
+<!-- popup.html -->
+<div class="popup">
+  <div class="popup-content">
+    <h2>Rolling...</h2>
+    <img src="{{ url_for('static', filename='image/russian-roulette.gif') }}" alt="roullement">
+	<form action="/roll/" method="post">
+			<button name="roll_button" class="roll" type="submit" onclick="closePopup()">Result</button>
+	</form>
+  </div>
+</div>

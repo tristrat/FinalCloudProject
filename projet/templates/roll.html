@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="UTF-8">
+<title>Roullette russe</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<body>
+
+<div class="">
+ <h1>Saved ♥</h1>
+ <p>juste une fois</p>
+ <img src="{{ url_for('static', filename='image/save.jpg') }}" alt="save">
+</div>
+	{{scorehtml}}
+	{{streakhtml}}
+<div>
+	<form action="/roll/" method="post">
+			<button name="roll_button" class="roll" type="submit">Keep Rolling</button>
+	</form>
+	<form action="/save/" method="post">
+			<label for="player_name">Enter pseudo to save:</label>
+            <input type="text" id="player_name" name="player_name">
+			<button name="save_button" class="save" type="submit">Save</button>
+	</form>
+</div>
+</body>
+</html>
+

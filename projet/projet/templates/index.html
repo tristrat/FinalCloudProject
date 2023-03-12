@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="UTF-8">
+<title>Roullette russe</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<body>
+
+<!--<img src="img_la.jpg" alt="LA" style="width:100%">-->
+
+<div class="">
+ <h1>La <sub>rouuuuuuuuuu</sub>lette de <sup>LA</sup> <i>M<sub>O</sub>R<sup>T</sup></i> ♥</h1>
+ <p>jouer votre vie</br>et sauvegarder votre score(si vous survivez!!!)</p>
+</div>
+	{{scorehtml}}
+	{{streakhtml}}
+<div>
+	<form action="/roll/" method="post">
+			<button name="roll_button" class="roll" type="submit">ROLLLLLLLLLLL</button>
+	</form>
+	<button onclick="showPopup()">Show Popup</button>
+	
+	{% include 'popup.html' %}
+	
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</div>
+<div>
+	<h2>scores</h2>
+	<table>
+		<tr>
+			<th>Rank</th>
+            <th>Name, Score</th>
+        </tr>
+        {% for i in range(0, lenhtml) %}
+        <tr>
+            <td>{{ i+1 }}</td>
+			<td>{{ scoresboard[i] }}</td>
+        </tr>
+        {% endfor %}
+	</table>
+</div>
+
+</body>
+</html>
+
