@@ -17,6 +17,8 @@ services:
       - db
     environment:
       DATABASE_URL: mongodb://root:score_tb@db:27017/score
+    volumes:
+      - .:/app 
 
 
 volumes:
