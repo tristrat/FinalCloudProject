@@ -14,7 +14,7 @@ services:
     container_name: mongodb
     # use brige_network to communicate 
     networks:
-      - brige_networks
+      - bridge_network
 
   # defines a service named "flask_app" that builds a container using the Dockerfile located in the current directory
   flask_app:
@@ -32,9 +32,9 @@ services:
     # usee a volume named "." bind-mounted at "/app"
     volumes:
       - .:/app
-    # use brige_network to communicate 
+    # use bridge_network to communicate 
     networks:
-      - brige_network
+      - bridge_network
     
 
 # defines a named volume named "db_data" that is used to store the MongoDB database data
