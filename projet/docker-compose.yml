@@ -1,25 +1,35 @@
+# vertion of docker-compose to use
 version: "3"
+
+
 services:
+  # defines a service named "db" that uses the "mongo" image
   db:
     image: mongo
     restart: always
+    # use a volume named "db_data" mounted at "/data/db"
     volumes:
       - db_data:/data/db
+    # explicitly name the container that is created from this service
     container_name: mongodb
 
-
+  # defines a service named "flask_app" that builds a container using the Dockerfile located in the current directory
   flask_app:
     build: .
     restart: always
+    # exopose the port 5000 of the container inkd to the port 5000 of the host
     ports:
       - "5000:5000"
+    # depends on the "db" service being up and running before it starts
     depends_on:
       - db
+    # it is linked to the database
     environment:
       DATABASE_URL: mongodb://root:score_tb@db:27017/score
+    # usee a volume named "." bind-mounted at "/app"
     volumes:
       - .:/app 
 
-
+# defines a named volume named "db_data" that is used to store the MongoDB database data
 volumes:
   db_data:
